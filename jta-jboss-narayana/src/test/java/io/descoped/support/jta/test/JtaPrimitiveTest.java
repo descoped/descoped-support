@@ -6,6 +6,7 @@ import io.descoped.container.module.factory.DefaultInstanceFactory;
 import io.descoped.container.module.factory.InstanceFactory;
 import io.descoped.container.module.spi.SpiInstanceFactory;
 import io.descoped.support.jta.JtaPrimitive;
+import org.apache.deltaspike.core.api.provider.BeanProvider;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -15,6 +16,7 @@ import org.junit.runners.JUnit4;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import javax.naming.InitialContext;
 import javax.transaction.TransactionManager;
 import javax.transaction.TransactionSynchronizationRegistry;
@@ -46,11 +48,11 @@ public class JtaPrimitiveTest {
 
     @Before
     public void setUp() throws Exception {
-//        BeanProvider.injectFields(this);
+        BeanProvider.injectFields(this);
     }
 
-//    @Inject
-//    UserTransaction utx;
+    @Inject
+    UserTransaction utx;
 
     @Test
     public void testTxManager() throws Exception {
@@ -71,8 +73,14 @@ public class JtaPrimitiveTest {
         assertNotNull(utx);
     }
 
-    @Test
+    @Test(expected = IllegalStateException.class)
     public void testUserTransactionProducer() throws Exception {
-//        assertNotNull(utx);
+        assertNotNull(utx);
+        log.trace("utx status - before utx.begin: {}", utx.getStatus());
+        utx.begin();
+        log.trace("utx status - after utx.begin: {}", utx.getStatus());
+        utx.commit();
+        log.trace("utx status - after utx.commit: {}", utx.getStatus());
+        utx.rollback();
     }
 }
