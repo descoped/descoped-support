@@ -6,6 +6,7 @@ import io.descoped.container.module.factory.DefaultInstanceFactory;
 import io.descoped.container.module.factory.InstanceFactory;
 import io.descoped.container.module.spi.SpiInstanceFactory;
 import io.descoped.support.jta.JtaPrimitive;
+import io.descoped.support.jta.TransactionStatus;
 import org.apache.deltaspike.core.api.provider.BeanProvider;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -76,11 +77,11 @@ public class JtaPrimitiveTest {
     @Test(expected = IllegalStateException.class)
     public void testUserTransactionProducer() throws Exception {
         assertNotNull(utx);
-        log.trace("utx status - before utx.begin: {}", utx.getStatus());
+        log.trace("utx status - before utx.begin: {}", TransactionStatus.valueOf(utx.getStatus()));
         utx.begin();
-        log.trace("utx status - after utx.begin: {}", utx.getStatus());
+        log.trace("utx status - after utx.begin: {}", TransactionStatus.valueOf(utx.getStatus()));
         utx.commit();
-        log.trace("utx status - after utx.commit: {}", utx.getStatus());
+        log.trace("utx status - after utx.commit: {}", TransactionStatus.valueOf(utx.getStatus()));
         utx.rollback();
     }
 }
