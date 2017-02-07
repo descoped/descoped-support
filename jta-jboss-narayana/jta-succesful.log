@@ -1,0 +1,210 @@
+Dependency tree:
+
+[INFO]
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ descoped-jta-jboss-narayana ---
+[INFO] io.descoped.support:descoped-jta-jboss-narayana:jar:1.0.2-SNAPSHOT
+[INFO] +- org.jboss.narayana.jta:narayana-jta:jar:5.5.1.Final:compile
+[INFO] +- org.jboss:jboss-transaction-spi:jar:7.5.0.Final:compile
+[INFO] |  +- org.jboss.spec.javax.resource:jboss-connector-api_1.7_spec:jar:1.0.0.Final:compile
+[INFO] |  \- org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:jar:1.0.0.Alpha3:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- io.descoped.cdi:descoped-cdi-container:jar:1.0.2-SNAPSHOT:compile
+[INFO] |  +- io.descoped:descoped-container:jar:1.0.2-SNAPSHOT:compile
+[INFO] |  |  +- javax.annotation:javax.annotation-api:jar:1.2:compile
+[INFO] |  |  \- io.descoped:descoped-logger:jar:1.0.2-SNAPSHOT:compile
+[INFO] |  |     \- org.slf4j:log4j-over-slf4j:jar:1.7.22:compile
+[INFO] |  +- org.jboss:jandex:jar:2.0.3.Final:compile
+[INFO] |  +- javax.enterprise:cdi-api:jar:1.2:compile
+[INFO] |  |  +- javax.el:javax.el-api:jar:3.0.0:compile
+[INFO] |  |  \- javax.inject:javax.inject:jar:1:compile
+[INFO] |  +- javax.interceptor:javax.interceptor-api:jar:1.2:compile
+[INFO] |  +- org.apache.deltaspike.core:deltaspike-core-api:jar:1.7.2:compile
+[INFO] |  +- org.apache.deltaspike.core:deltaspike-core-impl:jar:1.7.2:runtime
+[INFO] |  +- org.apache.deltaspike.modules:deltaspike-security-module-api:jar:1.7.2:compile
+[INFO] |  +- org.apache.deltaspike.modules:deltaspike-security-module-impl:jar:1.7.2:runtime
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.22:compile
+[INFO] |  +- org.slf4j:jul-to-slf4j:jar:1.7.22:compile
+[INFO] |  +- ch.qos.logback:logback-classic:jar:1.1.8:compile
+[INFO] |  |  \- ch.qos.logback:logback-core:jar:1.1.8:compile
+[INFO] |  \- io.descoped.cdi:cdi-weld:jar:1.0.2-SNAPSHOT:compile
+[INFO] +- io.descoped.support:descoped-jndi-jboss-naming:jar:1.0.2-SNAPSHOT:compile
+[INFO] |  \- org.jboss.naming:jnpserver:jar:5.0.3.GA:compile
+[INFO] |     \- org.jboss:jboss-common-core:jar:2.2.10.GA:compile
+[INFO] \- io.descoped.cdi:descoped-cdi-weld:jar:1.0.2-SNAPSHOT:runtime
+[INFO]    +- org.jboss.weld.se:weld-se-core:jar:2.4.2.Final:compile
+[INFO]    |  +- org.jboss.weld.environment:weld-environment-common:jar:2.4.2.Final:compile
+[INFO]    |  |  \- org.jboss.weld:weld-core-impl:jar:2.4.2.Final:compile
+[INFO]    |  |     +- org.jboss.weld:weld-api:jar:2.4.SP1:compile
+[INFO]    |  |     +- org.jboss.weld:weld-spi:jar:2.4.SP1:compile
+[INFO]    |  |     +- org.jboss.classfilewriter:jboss-classfilewriter:jar:1.2.1.Final:compile
+[INFO]    |  |     \- org.jboss.logging:jboss-logging:jar:3.2.1.Final:compile
+[INFO]    |  +- org.jboss.weld.probe:weld-probe-core:jar:2.4.2.Final:compile
+[INFO]    |  \- org.jboss.spec.javax.annotation:jboss-annotations-api_1.2_spec:jar:1.0.0.Final:compile
+[INFO]    \- org.apache.deltaspike.cdictrl:deltaspike-cdictrl-api:jar:1.7.2:compile
+
+
+Log:
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running io.descoped.support.jta.test.JtaPrimitiveTest
+15:40:54.964 [main] INFO  i.d.c.module.DescopedContainer::SpiInstanceFactory - Initiating discovery of Descoped SPI Module Primitives..
+15:40:55.022 [main] TRACE i.descoped.container.module.spi.SpiInstanceFactory - Invoke class io.descoped.support.jndi.JndiPrimitive.init()
+15:40:55.038 [main] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider
+15:40:55.041 [main] TRACE i.descoped.container.module.spi.SpiInstanceFactory - Invoked class io.descoped.support.jndi.JndiPrimitive.init()
+15:40:55.042 [main] TRACE i.descoped.container.module.spi.SpiInstanceFactory - Invoke class io.descoped.support.jta.JtaPrimitive.init()
+15:40:55.042 [main] TRACE i.descoped.container.module.spi.SpiInstanceFactory - Invoked class io.descoped.support.jta.JtaPrimitive.init()
+15:40:55.042 [main] TRACE i.descoped.container.module.spi.SpiInstanceFactory - Invoke class io.descoped.container.cdi.factory.CdiContainerModule.init()
+15:40:55.045 [main] TRACE i.descoped.container.module.spi.SpiInstanceFactory - Invoked class io.descoped.container.cdi.factory.CdiContainerModule.init()
+15:40:55.046 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Invoke SPI Module class io.descoped.support.jndi.JndiPrimitive.start() [runLevel=50]
+15:40:55.049 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Invoked SPI Module class io.descoped.support.jndi.JndiPrimitive.start() [runLevel=50]
+15:40:55.050 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Invoke SPI Module class io.descoped.support.jta.JtaPrimitive.start() [runLevel=75]
+15:40:55.075 [main] TRACE com.arjuna.ats.common - Loading class com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionManagerImple
+15:40:55.087 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Invoked SPI Module class io.descoped.support.jta.JtaPrimitive.start() [runLevel=75]
+15:40:55.087 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Invoke SPI Module class io.descoped.container.cdi.factory.CdiContainerModule.start() [runLevel=100]
+15:40:55.087 [main] TRACE i.d.c.weld.cdictrl.DescopedWeldContainerControl - Boot Descoped CDI Container
+15:40:55.102 [main] INFO  org.jboss.weld.Version - WELD-000900: 2.4.2 (Final)
+Feb 07, 2017 3:40:55 PM org.apache.deltaspike.core.impl.config.EnvironmentPropertyConfigSourceProvider <init>
+INFO: Custom config found by DeltaSpike. Name: 'META-INF/apache-deltaspike.properties', URL: 'file:/Users/oranheim/Documents/IdeaWorkspace/descoped-support/jta-jboss-narayana/target/test-classes/META-INF/apache-deltaspike.properties'
+Feb 07, 2017 3:40:55 PM org.apache.deltaspike.core.impl.config.EnvironmentPropertyConfigSourceProvider <init>
+INFO: Custom config found by DeltaSpike. Name: 'META-INF/apache-deltaspike.properties', URL: 'file:/Users/oranheim/Documents/IdeaWorkspace/descoped-support/jta-jboss-narayana/target/classes/META-INF/apache-deltaspike.properties'
+Feb 07, 2017 3:40:55 PM org.apache.deltaspike.core.impl.config.EnvironmentPropertyConfigSourceProvider <init>
+INFO: Custom config found by DeltaSpike. Name: 'META-INF/apache-deltaspike.properties', URL: 'jar:file:/Users/oranheim/.m2/repository/io/descoped/cdi/descoped-cdi-container/1.0.2-SNAPSHOT/descoped-cdi-container-1.0.2-SNAPSHOT.jar!/META-INF/apache-deltaspike.properties'
+Feb 07, 2017 3:40:55 PM org.apache.deltaspike.core.impl.config.EnvironmentPropertyConfigSourceProvider <init>
+INFO: Custom config found by DeltaSpike. Name: 'META-INF/apache-deltaspike.properties', URL: 'jar:file:/Users/oranheim/.m2/repository/io/descoped/cdi/cdi-weld/1.0.2-SNAPSHOT/cdi-weld-1.0.2-SNAPSHOT.jar!/META-INF/apache-deltaspike.properties'
+Feb 07, 2017 3:40:55 PM org.apache.deltaspike.core.impl.config.EnvironmentPropertyConfigSourceProvider <init>
+INFO: Custom config found by DeltaSpike. Name: 'META-INF/apache-deltaspike.properties', URL: 'jar:file:/Users/oranheim/.m2/repository/io/descoped/support/descoped-jndi-jboss-naming/1.0.2-SNAPSHOT/descoped-jndi-jboss-naming-1.0.2-SNAPSHOT.jar!/META-INF/apache-deltaspike.properties'
+Feb 07, 2017 3:40:55 PM org.apache.deltaspike.core.impl.config.EnvironmentPropertyConfigSourceProvider <init>
+INFO: Custom config found by DeltaSpike. Name: 'META-INF/apache-deltaspike.properties', URL: 'jar:file:/Users/oranheim/.m2/repository/io/descoped/cdi/descoped-cdi-weld/1.0.2-SNAPSHOT/descoped-cdi-weld-1.0.2-SNAPSHOT.jar!/META-INF/apache-deltaspike.properties'
+Feb 07, 2017 3:40:55 PM org.apache.deltaspike.core.util.ProjectStageProducer initProjectStage
+INFO: Computed the following DeltaSpike ProjectStage: Production
+15:40:55.154 [main] INFO  org.jboss.weld.Bootstrap - WELD-ENV-000020: Using jandex for bean discovery
+15:40:55.402 [main] TRACE io.descoped.container.weld.cdictrl.DescopedWeld - Register Service: class io.descoped.support.jta.DescopedTransactionServices
+15:40:55.402 [main] TRACE i.descoped.support.jta.DescopedTransactionServices - Create DescopedTransactionServices..
+15:40:55.632 [main] INFO  org.jboss.weld.Event - WELD-000411: Observer method [BackedAnnotatedMethod] protected org.apache.deltaspike.core.impl.interceptor.GlobalInterceptorExtension.promoteInterceptors(@Observes ProcessAnnotatedType, BeanManager) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+15:40:55.634 [main] INFO  org.jboss.weld.Event - WELD-000411: Observer method [BackedAnnotatedMethod] protected org.apache.deltaspike.core.impl.message.MessageBundleExtension.detectInterfaces(@Observes ProcessAnnotatedType) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+15:40:55.637 [main] INFO  org.jboss.weld.Event - WELD-000411: Observer method [BackedAnnotatedMethod] protected org.apache.deltaspike.core.impl.exclude.extension.ExcludeExtension.vetoBeans(@Observes ProcessAnnotatedType, BeanManager) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+15:40:55.643 [main] INFO  org.jboss.weld.Event - WELD-000411: Observer method [BackedAnnotatedMethod] public org.apache.deltaspike.security.impl.extension.SecurityExtension.processAnnotatedType(@Observes ProcessAnnotatedType<X>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+15:40:55.833 [main] WARN  org.jboss.weld.Validator - WELD-001478: Interceptor class com.arjuna.ats.jta.cdi.transactional.TransactionalInterceptorMandatory is enabled for the application and for the bean archive /Users/oranheim/Documents/IdeaWorkspace/descoped-support/jta-jboss-narayana/target/classes. It will only be invoked in the @Priority part of the chain.
+15:40:55.833 [main] WARN  org.jboss.weld.Validator - WELD-001478: Interceptor class com.arjuna.ats.jta.cdi.transactional.TransactionalInterceptorNever is enabled for the application and for the bean archive /Users/oranheim/Documents/IdeaWorkspace/descoped-support/jta-jboss-narayana/target/classes. It will only be invoked in the @Priority part of the chain.
+15:40:55.833 [main] WARN  org.jboss.weld.Validator - WELD-001478: Interceptor class com.arjuna.ats.jta.cdi.transactional.TransactionalInterceptorNotSupported is enabled for the application and for the bean archive /Users/oranheim/Documents/IdeaWorkspace/descoped-support/jta-jboss-narayana/target/classes. It will only be invoked in the @Priority part of the chain.
+15:40:55.833 [main] WARN  org.jboss.weld.Validator - WELD-001478: Interceptor class com.arjuna.ats.jta.cdi.transactional.TransactionalInterceptorRequired is enabled for the application and for the bean archive /Users/oranheim/Documents/IdeaWorkspace/descoped-support/jta-jboss-narayana/target/classes. It will only be invoked in the @Priority part of the chain.
+15:40:55.834 [main] WARN  org.jboss.weld.Validator - WELD-001478: Interceptor class com.arjuna.ats.jta.cdi.transactional.TransactionalInterceptorRequiresNew is enabled for the application and for the bean archive /Users/oranheim/Documents/IdeaWorkspace/descoped-support/jta-jboss-narayana/target/classes. It will only be invoked in the @Priority part of the chain.
+15:40:55.834 [main] WARN  org.jboss.weld.Validator - WELD-001478: Interceptor class com.arjuna.ats.jta.cdi.transactional.TransactionalInterceptorSupports is enabled for the application and for the bean archive /Users/oranheim/Documents/IdeaWorkspace/descoped-support/jta-jboss-narayana/target/classes. It will only be invoked in the @Priority part of the chain.
+15:40:55.834 [main] WARN  org.jboss.weld.Validator - WELD-001478: Interceptor class org.apache.deltaspike.core.impl.throttling.ThrottledInterceptor is enabled for the application and for the bean archive /Users/oranheim/.m2/repository/org/apache/deltaspike/core/deltaspike-core-impl/1.7.2/deltaspike-core-impl-1.7.2.jar. It will only be invoked in the @Priority part of the chain.
+15:40:55.834 [main] WARN  org.jboss.weld.Validator - WELD-001478: Interceptor class org.apache.deltaspike.core.impl.lock.LockedInterceptor is enabled for the application and for the bean archive /Users/oranheim/.m2/repository/org/apache/deltaspike/core/deltaspike-core-impl/1.7.2/deltaspike-core-impl-1.7.2.jar. It will only be invoked in the @Priority part of the chain.
+15:40:55.835 [main] WARN  org.jboss.weld.Validator - WELD-001478: Interceptor class org.apache.deltaspike.core.impl.future.FutureableInterceptor is enabled for the application and for the bean archive /Users/oranheim/.m2/repository/org/apache/deltaspike/core/deltaspike-core-impl/1.7.2/deltaspike-core-impl-1.7.2.jar. It will only be invoked in the @Priority part of the chain.
+15:40:55.835 [main] WARN  org.jboss.weld.Validator - WELD-001478: Interceptor class org.apache.deltaspike.security.impl.extension.SecurityInterceptor is enabled for the application and for the bean archive /Users/oranheim/.m2/repository/org/apache/deltaspike/modules/deltaspike-security-module-impl/1.7.2/deltaspike-security-module-impl-1.7.2.jar. It will only be invoked in the @Priority part of the chain.
+15:40:56.149 [main] INFO  org.jboss.weld.Bootstrap - WELD-ENV-002003: Weld SE container 9b64dd55-4bf2-4323-af91-fb6ae56ce929 initialized
+15:40:56.149 [main] INFO  i.d.c.weld.cdictrl.DescopedWeldContainerControl - o-------------------> ctxCtrlBean: class io.descoped.container.weld.cdictrl.DescopedWeldContextControl
+15:40:56.155 [main] INFO  i.d.c.module.DescopedContainer::CdiInstanceFactory - Initiating discovery of Descoped CDI Extension Primitives..
+15:40:56.158 [main] INFO  i.d.c.module.DescopedContainer::CdiInstanceFactory - Started 0 CDI Extension primitives
+15:40:56.159 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Invoked SPI Module class io.descoped.container.cdi.factory.CdiContainerModule.start() [runLevel=100]
+15:40:56.159 [main] INFO  i.d.c.module.DescopedContainer::SpiInstanceFactory - Started 3 SPI Module primitives
+15:40:56.178 [main] TRACE io.descoped.support.jta.test.JtaPrimitiveTest - utx status - before utx.begin: 6
+15:40:56.181 [main] TRACE com.arjuna.ats.jta - BaseTransaction.begin
+15:40:56.184 [main] TRACE com.arjuna.ats.common - Loading class com.arjuna.ats.arjuna.recovery.ActionStatusService
+15:40:56.186 [main] TRACE com.arjuna.ats.common - Loading class com.arjuna.ats.internal.arjuna.objectstore.ShadowNoFileLockStore
+15:40:56.243 [main] TRACE com.arjuna.ats.arjuna - FileSystemStore.createHierarchy(target/tx-object-store/ShadowNoFileLockStore/defaultStore/)
+15:40:56.257 [main] DEBUG com.arjuna.ats.arjuna - com.arjuna.ats.arjuna.recovery.ActionStatusService starting
+15:40:56.260 [main] TRACE com.arjuna.ats.common - Loading class com.arjuna.ats.internal.arjuna.utils.SocketProcessId
+15:40:56.261 [main] DEBUG com.arjuna.ats.arjuna - TransactionStatusManagerItem host: {0} port: {1}
+15:40:56.261 [main] TRACE com.arjuna.ats.arjuna - OutputObjectState::OutputObjectState()
+15:40:56.262 [main] TRACE com.arjuna.ats.common - Loading class com.arjuna.ats.internal.arjuna.objectstore.ShadowNoFileLockStore
+15:40:56.262 [main] TRACE com.arjuna.ats.arjuna - FileSystemStore.createHierarchy(target/tx-object-store/ShadowNoFileLockStore/defaultStore/)
+15:40:56.262 [main] TRACE com.arjuna.ats.arjuna - FileSystemStore.write_committed(0:ffffc0a800c7:c19b:5899dc78:0, /Recovery/TransactionStatusManager)
+15:40:56.262 [main] TRACE com.arjuna.ats.arjuna - ShadowingStore.write_state(0:ffffc0a800c7:c19b:5899dc78:0, /Recovery/TransactionStatusManager, StateType.OS_ORIGINAL)
+15:40:56.262 [main] TRACE com.arjuna.ats.arjuna - ShadowingStore.genPathName(0:ffffc0a800c7:c19b:5899dc78:0, /Recovery/TransactionStatusManager, StateType.OS_ORIGINAL)
+15:40:56.263 [main] TRACE com.arjuna.ats.arjuna - FileSystemStore.genPathName(0:ffffc0a800c7:c19b:5899dc78:0, /Recovery/TransactionStatusManager, 11)
+15:40:56.263 [main] TRACE com.arjuna.ats.arjuna - FileSystemStore.openAndLock(target/tx-object-store/ShadowNoFileLockStore/defaultStore/Recovery/TransactionStatusManager/0_ffffc0a800c7_c19b_5899dc78_0, FileLock.F_WRLCK, true)
+15:40:56.264 [main] TRACE com.arjuna.ats.arjuna - FileSystemStore.createHierarchy(target/tx-object-store/ShadowNoFileLockStore/defaultStore/Recovery/TransactionStatusManager/0_ffffc0a800c7_c19b_5899dc78_0)
+15:40:56.273 [main] TRACE com.arjuna.ats.arjuna - FileSystemStore.closeAndUnlock(target/tx-object-store/ShadowNoFileLockStore/defaultStore/Recovery/TransactionStatusManager/0_ffffc0a800c7_c19b_5899dc78_0, null, java.io.FileOutputStream@72efb5c1)
+15:40:56.273 [main] INFO  com.arjuna.ats.arjuna - ARJUNA012170: TransactionStatusManager started on port 49562 and host 127.0.0.1 with service com.arjuna.ats.arjuna.recovery.ActionStatusService
+15:40:56.274 [main] TRACE com.arjuna.ats.arjuna - StateManager::StateManager( 2, 0 )
+15:40:56.275 [main] TRACE com.arjuna.ats.arjuna - BasicAction::BasicAction()
+15:40:56.275 [main] TRACE com.arjuna.ats.common - Loading class com.arjuna.ats.internal.arjuna.coordinator.CheckedActionFactoryImple
+15:40:56.276 [main] TRACE com.arjuna.ats.arjuna - BasicAction::Begin() for action-id 0:ffffc0a800c7:c19b:5899dc78:2
+15:40:56.276 [main] TRACE com.arjuna.ats.arjuna - BasicAction::actionInitialise() for action-id 0:ffffc0a800c7:c19b:5899dc78:2
+15:40:56.277 [main] TRACE com.arjuna.ats.arjuna - ActionHierarchy::ActionHierarchy(1)
+15:40:56.277 [main] TRACE com.arjuna.ats.arjuna - ActionHierarchy::add(0:ffffc0a800c7:c19b:5899dc78:2, 1)
+15:40:56.279 [main] TRACE com.arjuna.ats.arjuna - BasicAction::addChildThread () action 0:ffffc0a800c7:c19b:5899dc78:2 adding Thread[main,5,main]
+15:40:56.279 [main] TRACE com.arjuna.ats.arjuna - BasicAction::addChildThread () action 0:ffffc0a800c7:c19b:5899dc78:2 adding Thread[main,5,main] result = true
+15:40:56.281 [main] TRACE com.arjuna.ats.arjuna - TransactionReaper::instantiate()
+15:40:56.282 [main] TRACE com.arjuna.ats.arjuna - TransactionReaper::TransactionReaper ( 9223372036854775807 )
+15:40:56.283 [Transaction Reaper] TRACE com.arjuna.ats.arjuna - ReaperThread.run ()
+15:40:56.283 [Transaction Reaper Worker 0] TRACE com.arjuna.ats.arjuna - ReaperWorkerThread.run ()
+15:40:56.283 [main] TRACE com.arjuna.ats.arjuna - TransactionReaper::insert ( BasicAction: 0:ffffc0a800c7:c19b:5899dc78:2 status: ActionStatus.RUNNING, 60 )
+15:40:56.283 [Transaction Reaper] TRACE com.arjuna.ats.arjuna - Thread Thread[Transaction Reaper,5,main] sleeping for 9223370550376319524
+15:40:56.283 [Transaction Reaper Worker 0] TRACE com.arjuna.ats.arjuna - Thread Thread[Transaction Reaper Worker 0,5,main] waiting for cancelled TXs
+15:40:56.284 [main] TRACE com.arjuna.ats.arjuna - ReaperElement::ReaperElement ( BasicAction: 0:ffffc0a800c7:c19b:5899dc78:2 status: ActionStatus.RUNNING, 60 )
+15:40:56.284 [Transaction Reaper] TRACE com.arjuna.ats.arjuna - ReaperThread.run ()
+15:40:56.285 [Transaction Reaper] TRACE com.arjuna.ats.arjuna - TransactionReaper::check ()
+15:40:56.285 [Transaction Reaper] TRACE com.arjuna.ats.arjuna - TransactionReaper::check - comparing 1486478516284
+15:40:56.285 [Transaction Reaper] TRACE com.arjuna.ats.arjuna - Thread Thread[Transaction Reaper,5,main] sleeping for 59999
+15:40:56.285 [main] TRACE com.arjuna.ats.jta - TransactionImple.getStatus: javax.transaction.Status.STATUS_ACTIVE
+15:40:56.285 [main] TRACE io.descoped.support.jta.test.JtaPrimitiveTest - utx status - after utx.begin: 0
+15:40:56.285 [main] TRACE com.arjuna.ats.jta - BaseTransaction.commit
+15:40:56.285 [main] TRACE com.arjuna.ats.jta - TransactionImple.commitAndDisassociate
+15:40:56.286 [main] TRACE com.arjuna.ats.arjuna - BasicAction::End() for action-id 0:ffffc0a800c7:c19b:5899dc78:2
+15:40:56.286 [main] TRACE com.arjuna.ats.arjuna - BasicAction::End() result for action-id (0:ffffc0a800c7:c19b:5899dc78:2) is (TwoPhaseOutcome.PREPARE_OK) node id: (1)
+15:40:56.286 [main] TRACE com.arjuna.ats.arjuna - BasicAction::removeChildThread () action 0:ffffc0a800c7:c19b:5899dc78:2 removing 1
+15:40:56.287 [main] TRACE com.arjuna.ats.arjuna - BasicAction::removeChildThread () action 0:ffffc0a800c7:c19b:5899dc78:2 removing 1 result = true
+15:40:56.287 [main] TRACE com.arjuna.ats.arjuna - TransactionReaper::remove ( BasicAction: 0:ffffc0a800c7:c19b:5899dc78:2 status: ActionStatus.COMMITTED )
+15:40:56.287 [main] TRACE io.descoped.support.jta.test.JtaPrimitiveTest - utx status - after utx.commit: 6
+15:40:56.287 [main] TRACE com.arjuna.ats.jta - BaseTransaction.rollback
+15:40:56.289 [main] INFO  i.d.c.module.DescopedContainer::SpiInstanceFactory - Releasing 1 Descoped SPI Module Primitives..
+15:40:56.290 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Invoke SPI Module class io.descoped.container.cdi.factory.CdiContainerModule.stop() [runLevel=100]
+15:40:56.340 [main] INFO  org.jboss.weld.Bootstrap - WELD-ENV-002001: Weld SE container 9b64dd55-4bf2-4323-af91-fb6ae56ce929 shut down
+15:40:56.340 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Invoked SPI Module class io.descoped.container.cdi.factory.CdiContainerModule.stop() [runLevel=100]
+15:40:56.340 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Removing instance: class io.descoped.container.cdi.factory.CdiContainerModule
+15:40:56.340 [main] TRACE i.descoped.container.module.spi.SpiInstanceFactory - Invoke class io.descoped.container.cdi.factory.CdiContainerModule.destroy()
+15:40:56.341 [main] TRACE i.descoped.container.module.spi.SpiInstanceFactory - Invoked class io.descoped.container.cdi.factory.CdiContainerModule.destroy()
+15:40:56.341 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Invoke SPI Module class io.descoped.support.jta.JtaPrimitive.stop() [runLevel=75]
+15:40:56.341 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Invoked SPI Module class io.descoped.support.jta.JtaPrimitive.stop() [runLevel=75]
+15:40:56.341 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Removing instance: class io.descoped.support.jta.JtaPrimitive
+15:40:56.341 [main] TRACE i.descoped.container.module.spi.SpiInstanceFactory - Invoke class io.descoped.support.jta.JtaPrimitive.destroy()
+15:40:56.341 [main] TRACE i.descoped.container.module.spi.SpiInstanceFactory - Invoked class io.descoped.support.jta.JtaPrimitive.destroy()
+15:40:56.341 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Invoke SPI Module class io.descoped.support.jndi.JndiPrimitive.stop() [runLevel=50]
+15:40:56.341 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Invoked SPI Module class io.descoped.support.jndi.JndiPrimitive.stop() [runLevel=50]
+15:40:56.341 [main] TRACE i.d.c.module.DescopedContainer::SpiInstanceFactory - Removing instance: class io.descoped.support.jndi.JndiPrimitive
+15:40:56.341 [main] TRACE i.descoped.container.module.spi.SpiInstanceFactory - Invoke class io.descoped.support.jndi.JndiPrimitive.destroy()
+15:40:56.341 [main] TRACE i.descoped.container.module.spi.SpiInstanceFactory - Invoked class io.descoped.support.jndi.JndiPrimitive.destroy()
+15:40:56.342 [main] INFO  i.d.c.module.DescopedContainer::SpiInstanceFactory - Stopped 3 SPI Module primitives
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.567 sec - in io.descoped.support.jta.test.JtaPrimitiveTest
+15:40:56.345 [Listener:49562] DEBUG com.arjuna.ats.arjuna - Recovery listener existing com.arjuna.ats.arjuna.recovery.ActionStatusService
+15:40:56.345 [Thread-1] TRACE com.arjuna.ats.arjuna - FileSystemStore.remove_committed(0:ffffc0a800c7:c19b:5899dc78:0, /Recovery/TransactionStatusManager)
+15:40:56.346 [Thread-1] TRACE com.arjuna.ats.arjuna - ShadowingStore.remove_state(0:ffffc0a800c7:c19b:5899dc78:0, /Recovery/TransactionStatusManager, StateType.OS_ORIGINAL)
+15:40:56.346 [Thread-1] TRACE com.arjuna.ats.arjuna - ShadowingStore.genPathName(0:ffffc0a800c7:c19b:5899dc78:0, /Recovery/TransactionStatusManager, StateType.OS_SHADOW)
+15:40:56.346 [Thread-1] TRACE com.arjuna.ats.arjuna - FileSystemStore.genPathName(0:ffffc0a800c7:c19b:5899dc78:0, /Recovery/TransactionStatusManager, 10)
+15:40:56.346 [Thread-1] TRACE com.arjuna.ats.arjuna - ShadowingStore.genPathName(0:ffffc0a800c7:c19b:5899dc78:0, /Recovery/TransactionStatusManager, StateType.OS_ORIGINAL)
+15:40:56.346 [Thread-1] TRACE com.arjuna.ats.arjuna - FileSystemStore.genPathName(0:ffffc0a800c7:c19b:5899dc78:0, /Recovery/TransactionStatusManager, 11)
+15:40:56.346 [Thread-1] TRACE com.arjuna.ats.arjuna - ShadowingStore.currentState(0:ffffc0a800c7:c19b:5899dc78:0, /Recovery/TransactionStatusManager) - returning StateStatus.OS_COMMITTED
+15:40:56.346 [Thread-1] TRACE com.arjuna.ats.arjuna - ShadowingStore.genPathName(0:ffffc0a800c7:c19b:5899dc78:0, /Recovery/TransactionStatusManager, StateType.OS_ORIGINAL)
+15:40:56.346 [Thread-1] TRACE com.arjuna.ats.arjuna - FileSystemStore.genPathName(0:ffffc0a800c7:c19b:5899dc78:0, /Recovery/TransactionStatusManager, 11)
+15:40:56.346 [Thread-1] TRACE com.arjuna.ats.arjuna - FileSystemStore.openAndLock(target/tx-object-store/ShadowNoFileLockStore/defaultStore/Recovery/TransactionStatusManager/0_ffffc0a800c7_c19b_5899dc78_0, FileLock.F_WRLCK, false)
+15:40:56.347 [Thread-1] TRACE com.arjuna.ats.arjuna - FileSystemStore.closeAndUnlock(target/tx-object-store/ShadowNoFileLockStore/defaultStore/Recovery/TransactionStatusManager/0_ffffc0a800c7_c19b_5899dc78_0, null, null)
+
+Results :
+
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO]
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ descoped-jta-jboss-narayana ---
+[INFO] Building jar: /Users/oranheim/Documents/IdeaWorkspace/descoped-support/jta-jboss-narayana/target/descoped-jta-jboss-narayana-1.0.2-SNAPSHOT.jar
+[INFO]
+[INFO] --- maven-source-plugin:3.0.1:jar-no-fork (attach-sources) @ descoped-jta-jboss-narayana ---
+[INFO] Building jar: /Users/oranheim/Documents/IdeaWorkspace/descoped-support/jta-jboss-narayana/target/descoped-jta-jboss-narayana-1.0.2-SNAPSHOT-sources.jar
+[INFO]
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ descoped-jta-jboss-narayana ---
+[INFO] Installing /Users/oranheim/Documents/IdeaWorkspace/descoped-support/jta-jboss-narayana/target/descoped-jta-jboss-narayana-1.0.2-SNAPSHOT.jar to /Users/oranheim/.m2/repository/io/descoped/support/descoped-jta-jboss-narayana/1.0.2-SNAPSHOT/descoped-jta-jboss-narayana-1.0.2-SNAPSHOT.jar
+[INFO] Installing /Users/oranheim/Documents/IdeaWorkspace/descoped-support/jta-jboss-narayana/pom.xml to /Users/oranheim/.m2/repository/io/descoped/support/descoped-jta-jboss-narayana/1.0.2-SNAPSHOT/descoped-jta-jboss-narayana-1.0.2-SNAPSHOT.pom
+[INFO] Installing /Users/oranheim/Documents/IdeaWorkspace/descoped-support/jta-jboss-narayana/target/descoped-jta-jboss-narayana-1.0.2-SNAPSHOT-sources.jar to /Users/oranheim/.m2/repository/io/descoped/support/descoped-jta-jboss-narayana/1.0.2-SNAPSHOT/descoped-jta-jboss-narayana-1.0.2-SNAPSHOT-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 5.021 s
+[INFO] Finished at: 2017-02-07T15:40:57+01:00
+[INFO] Final Memory: 26M/412M
+[INFO] ------------------------------------------------------------------------
