@@ -1,2 +1,3 @@
-# descoped-support
-Descoped Java EE Support modules
+# Descoped Java EE Support modules
+
+## Intro
