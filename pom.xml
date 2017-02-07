@@ -13,6 +13,71 @@
     <packaging>pom</packaging>
     <name>Descoped Support Modules</name>
 
+    <developers>
+        <developer>
+            <id>oranheim</id>
+            <name>Ove Ranheim</name>
+            <email>oranheim@gmail.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <organization>Descoped</organization>
+            <organizationUrl>http://www.descoped.io/</organizationUrl>
+        </developer>
+    </developers>
+
+    <distributionManagement>
+        <repository>
+            <id>descoped</id>
+            <name>Descoped Releases</name>
+            <url>https://repository.musific.com/nexus/content/repositories/descoped/</url>
+        </repository>
+        <snapshotRepository>
+            <id>descoped-snapshots</id>
+            <name>Descoped Snapshots</name>
+            <url>https://repository.musific.com/nexus/content/repositories/descoped-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <scm>
+        <url>http://www.descoped.io</url>
+        <connection>scm:git:git://github.com/descoped/descoped-support.git</connection>
+        <developerConnection>scm:git:git@github.com:descoped/descoped-support.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <repositories>
+        <repository>
+            <id>musific-public-repository-group</id>
+            <name>Musific Public Maven Repository Group</name>
+            <url>https://repository.musific.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>musific-public-repository</id>
+            <name>Musific Public Maven Repository Group</name>
+            <url>https://repository.musific.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
     <modules>
         <module>jndi-jboss-naming</module>
         <module>jta-jboss-narayana</module>
