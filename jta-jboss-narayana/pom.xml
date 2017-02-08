@@ -130,7 +130,7 @@
                     </dependency>
 
                     <dependency>
-                        <groupId>io.descoped</groupId>
+                        <groupId>io.descoped.cdi</groupId>
                         <artifactId>descoped-cdictrl-weld</artifactId>
                         <version>${descoped.container.version}</version>
                         <scope>runtime</scope>
@@ -153,7 +153,7 @@
                 </dependency>
 
                 <dependency>
-                    <groupId>io.descoped</groupId>
+                    <groupId>io.descoped.cdi</groupId>
                     <artifactId>descoped-cdictrl-weld</artifactId>
                 </dependency>
             </dependencies>
