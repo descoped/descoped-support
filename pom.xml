@@ -79,6 +79,11 @@
         </pluginRepository>
     </pluginRepositories>
 
+    <properties>
+        <descoped.container.version>1.0.2-SNAPSHOT</descoped.container.version>
+        <descoped.web.version>1.0.2-SNAPSHOT</descoped.web.version>
+    </properties>
+
     <modules>
         <module>jndi-jboss-naming</module>
         <module>jta-jboss-narayana</module>

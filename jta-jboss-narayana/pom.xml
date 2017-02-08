@@ -19,6 +19,7 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.javadoc.skip>true</maven.javadoc.skip>
+
         <version.narayana>5.5.1.Final</version.narayana>
         <version.jboss-transaction-spi>7.5.0.Final</version.jboss-transaction-spi>
     </properties>
@@ -26,38 +27,51 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>javax</groupId>
-                <artifactId>javaee-web-api</artifactId>
-                <version>${javaee.web.api}</version>
+                <groupId>io.descoped</groupId>
+                <artifactId>descoped-bom</artifactId>
+                <version>${descoped.container.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.narayana.jta</groupId>
+                <artifactId>narayana-jta</artifactId>
+                <version>${version.narayana}</version>
+                <scope>compile</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jboss.logmanager</groupId>
+                        <artifactId>jboss-logmanager</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jboss-transaction-spi</artifactId>
+                <version>${version.jboss-transaction-spi}</version>
+                <scope>compile</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jboss.logging</groupId>
+                        <artifactId>jboss-logging-spi</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
+
         <dependency>
             <groupId>org.jboss.narayana.jta</groupId>
             <artifactId>narayana-jta</artifactId>
-            <version>${version.narayana}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jboss.logmanager</groupId>
-                    <artifactId>jboss-logmanager</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>org.jboss</groupId>
             <artifactId>jboss-transaction-spi</artifactId>
-            <version>${version.jboss-transaction-spi}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jboss.logging</groupId>
-                    <artifactId>jboss-logging-spi</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
@@ -69,17 +83,20 @@
     <profiles>
         <profile>
             <id>weld</id>
+
             <dependencies>
                 <dependency>
-                    <groupId>io.descoped.cdi</groupId>
-                    <artifactId>descoped-cdi-container</artifactId>
-                    <version>${project.version}</version>
+                    <groupId>io.descoped</groupId>
+                    <artifactId>descoped-container</artifactId>
+                    <version>${descoped.container.version}</version>
+                    <scope>compile</scope>
                 </dependency>
 
                 <dependency>
                     <groupId>io.descoped.support</groupId>
                     <artifactId>descoped-jndi-jboss-naming</artifactId>
                     <version>${project.version}</version>
+                    <scope>compile</scope>
                 </dependency>
             </dependencies>
         </profile>
@@ -89,36 +106,55 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>io.descoped</groupId>
+                        <artifactId>weld-cdictrl-bom</artifactId>
+                        <version>${descoped.container.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>io.descoped.cdi</groupId>
+                        <artifactId>descoped-cdi-container</artifactId>
+                        <version>${descoped.container.version}</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>org.apache.deltaspike.cdictrl</groupId>
+                                <artifactId>deltaspike-cdictrl-weld</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>io.descoped</groupId>
+                        <artifactId>descoped-cdictrl-weld</artifactId>
+                        <version>${descoped.container.version}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+
+                </dependencies>
+            </dependencyManagement>
+
             <dependencies>
                 <dependency>
                     <groupId>io.descoped.cdi</groupId>
                     <artifactId>descoped-cdi-container</artifactId>
-                    <version>${project.version}</version>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>org.apache.deltaspike.cdictrl</groupId>
-                            <artifactId>deltaspike-cdictrl-weld</artifactId>
-                        </exclusion>
-                    </exclusions>
                 </dependency>
 
                 <dependency>
                     <groupId>io.descoped.support</groupId>
                     <artifactId>descoped-jndi-jboss-naming</artifactId>
                     <version>${project.version}</version>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>org.apache.deltaspike.cdictrl</groupId>
-                            <artifactId>deltaspike-cdictrl-weld</artifactId>
-                        </exclusion>
-                    </exclusions>
+                    <scope>compile</scope>
                 </dependency>
 
                 <dependency>
-                    <groupId>io.descoped.cdi</groupId>
-                    <artifactId>descoped-cdi-weld</artifactId>
-                    <version>${project.version}</version>
-                    <scope>runtime</scope>
+                    <groupId>io.descoped</groupId>
+                    <artifactId>descoped-cdictrl-weld</artifactId>
                 </dependency>
             </dependencies>
         </profile>
