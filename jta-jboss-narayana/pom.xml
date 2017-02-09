@@ -35,6 +35,21 @@
             </dependency>
 
             <dependency>
+                <groupId>io.descoped</groupId>
+                <artifactId>descoped-container</artifactId>
+                <version>${descoped.container.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.descoped.support</groupId>
+                <artifactId>descoped-jndi-jboss-naming</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+
+            <dependency>
                 <groupId>org.jboss.narayana.jta</groupId>
                 <artifactId>narayana-jta</artifactId>
                 <version>${version.narayana}</version>
@@ -88,15 +103,11 @@
                 <dependency>
                     <groupId>io.descoped</groupId>
                     <artifactId>descoped-container</artifactId>
-                    <version>${descoped.container.version}</version>
-                    <scope>compile</scope>
                 </dependency>
 
                 <dependency>
                     <groupId>io.descoped.support</groupId>
                     <artifactId>descoped-jndi-jboss-naming</artifactId>
-                    <version>${project.version}</version>
-                    <scope>compile</scope>
                 </dependency>
             </dependencies>
         </profile>
@@ -148,8 +159,6 @@
                 <dependency>
                     <groupId>io.descoped.support</groupId>
                     <artifactId>descoped-jndi-jboss-naming</artifactId>
-                    <version>${project.version}</version>
-                    <scope>compile</scope>
                 </dependency>
 
                 <dependency>
