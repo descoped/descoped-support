@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration debug="false" scan="false">
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+        <encoder>
+            <pattern>%highlight(%d{HH:mm:ss.SSS}) %highlight([%thread]) %highlight(%-5level) %highlight(%logger{50}) %highlight(- %msg%n)</pattern>
+        </encoder>
+    </appender>
+
+    <!--Daily rolling file appender -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>target/logs/server.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>target/logs/descoped-server-%d{yyyy-MM-dd}.log</FileNamePattern>
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+
+        <!--
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss.SSS} %-5level %logger{35} - %msg%n</Pattern>
+        </layout>
+        -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="ch.qos.logback" level="OFF" additivity="false"/>
+    <logger name="io.descoped.container.cdi.factory" level="INFO"/>
+    <logger name="io.descoped.container.module" level="TRACE"/>
+
+    <logger name="org.jboss.weld" level="INFO"/>
+    <logger name="io.descoped" level="TRACE"/>
+    <logger name="org.jnp" level="INFO"/>
+    <logger name="org.hibernate" level="INFO"/>
+
+    <root level="TRACE">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

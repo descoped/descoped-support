@@ -1,0 +1,121 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.descoped.support</groupId>
+        <artifactId>descoped-support-project</artifactId>
+        <version>1.0.3-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>io.descoped.support</groupId>
+    <artifactId>descoped-jpa-hibernate-orm</artifactId>
+    <packaging>jar</packaging>
+    <name>Descoped JPA Hibernate ORM</name>
+    <url>http://www.descoped.io</url>
+
+    <properties>
+        <hibernate.version>5.2.7.Final</hibernate.version>
+        <h2database.version>1.4.193</h2database.version>
+        <mysql.connector.version>5.1.40</mysql.connector.version> <!-- mysql 5.7 server -->
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.descoped</groupId>
+                <artifactId>descoped-bom</artifactId>
+                <version>${descoped.container.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.descoped.test</groupId>
+                <artifactId>descoped-junit4</artifactId>
+                <version>${descoped.testutils.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.descoped.cdi</groupId>
+            <artifactId>descoped-cdi-container</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.descoped.test</groupId>
+            <artifactId>descoped-junit4</artifactId>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+
+        <profile>
+            <id>h2</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <dependencies>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <version>${h2database.version}</version>
+                    <scope>test</scope>
+                </dependency>
+
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>mysql</id>
+
+            <dependencies>
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>${mysql.connector.version}</version>
+                    <scope>test</scope>
+                </dependency>
+
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>jta</id>
+
+            <dependencies>
+                <dependency>
+                    <groupId>io.descoped.support</groupId>
+                    <artifactId>descoped-jta-jboss-narayana</artifactId>
+                    <version>${project.version}</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+
+    </profiles>
+
+</project>

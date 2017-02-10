@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -79,13 +80,40 @@
     </pluginRepositories>
 
     <properties>
-        <descoped.container.version>1.0.2</descoped.container.version>
-        <descoped.web.version>1.0.2</descoped.web.version>
+        <descoped.container.version>1.0.3</descoped.container.version>
+        <descoped.web.version>1.0.3</descoped.web.version>
+        <descoped.testutils.version>1.0.3</descoped.testutils.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.descoped.support</groupId>
+                <artifactId>descoped-jndi-jboss-naming</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.descoped.support</groupId>
+                <artifactId>descoped-jta-jboss-narayana</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.descoped.support</groupId>
+                <artifactId>descoped-jpa-hibernate-orm</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <modules>
         <module>jndi-jboss-naming</module>
         <module>jta-jboss-narayana</module>
+        <module>jpa-hibernate-orm</module>
     </modules>
 
 </project>

@@ -2,6 +2,8 @@
 
 ## Intro
 
+2017-02-09: Check out: org.jboss.weld.bootstrap.api.Service (instead of custom cdictrl)
+
 Important notice:
 
 * Make sure DeltaSpike Test Control is not on classpath

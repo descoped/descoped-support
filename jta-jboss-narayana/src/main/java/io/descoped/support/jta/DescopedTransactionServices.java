@@ -5,7 +5,7 @@ import org.jboss.weld.transaction.spi.TransactionServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.enterprise.inject.Vetoed;
+import javax.annotation.Priority;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.transaction.Status;
@@ -19,17 +19,27 @@ import javax.transaction.UserTransaction;
  * https://github.com/arquillian/arquillian-extension-transaction/tree/master/impl-jta/src/main/java/org/jboss/arquillian/transaction/jta
  * http://www.laliluna.com/articles/2011/01/12/jboss-weld-jpa-hibernate.html
  */
-@Vetoed
+@Priority(1000)
 public class DescopedTransactionServices implements TransactionServices {
 
     private static final Logger log = LoggerFactory.getLogger(DescopedTransactionServices.class);
+    private static int count = 0;
 
     public DescopedTransactionServices() {
         log.trace("Create DescopedTransactionServices..");
+//        try {
+//            if (count == 1)
+//                throw new RuntimeException("XXX");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        count++;
     }
+
 
     @Override
     public void registerSynchronization(Synchronization synchronization) {
+        log.trace("-------> registerSynchronization({})", synchronization);
         try {
             JtaPrimitive.TransactionSynchronizationRegistry().registerInterposedSynchronization(synchronization);
         } catch (NamingException e) {
@@ -39,6 +49,7 @@ public class DescopedTransactionServices implements TransactionServices {
 
     @Override
     public boolean isTransactionActive() {
+        log.trace("-------> isTransactionActive");
         try {
             return JtaPrimitive.getTransaction().getStatus() == Status.STATUS_ACTIVE;
         } catch (SystemException | NamingException e) {
@@ -48,6 +59,7 @@ public class DescopedTransactionServices implements TransactionServices {
 
     @Override
     public UserTransaction getUserTransaction() {
+        log.trace("-------> getUserTransaction");
         try {
             InitialContext ic = new InitialContext();
             UserTransaction utx = (UserTransaction) ic.lookup("java:/UserTransaction");
