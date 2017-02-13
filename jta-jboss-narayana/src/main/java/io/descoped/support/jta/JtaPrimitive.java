@@ -62,9 +62,10 @@ public class JtaPrimitive implements DescopedPrimitive {
     @Override
     public void stop() {
         if (running) {
-            // do nothing
             try {
+                // reverse of: JNDIManager.bindJTAImplementation();
                 JNDIManager.unbindJTATransactionSynchronizationRegistryImplementation();
+                //JNDIManager.unbindJTAUserTransactionImplementation(); // todo: should be unbinded on shutdown
                 JNDIManager.unbindJTATransactionManagerImplementation();
             } catch (NamingException e) {
                 throw new DescopedServerException(e);

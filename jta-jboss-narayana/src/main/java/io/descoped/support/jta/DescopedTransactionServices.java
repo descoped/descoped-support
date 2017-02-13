@@ -19,7 +19,7 @@ import javax.transaction.UserTransaction;
  * https://github.com/arquillian/arquillian-extension-transaction/tree/master/impl-jta/src/main/java/org/jboss/arquillian/transaction/jta
  * http://www.laliluna.com/articles/2011/01/12/jboss-weld-jpa-hibernate.html
  */
-@Priority(1000)
+@Priority(75)
 public class DescopedTransactionServices implements TransactionServices {
 
     private static final Logger log = LoggerFactory.getLogger(DescopedTransactionServices.class);

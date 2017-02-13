@@ -16,6 +16,7 @@
     <url>http://www.descoped.io</url>
 
     <properties>
+        <descoped.reflection.version>1.0.1</descoped.reflection.version>
         <hibernate.version>5.2.7.Final</hibernate.version>
         <h2database.version>1.4.193</h2database.version>
         <mysql.connector.version>5.1.40</mysql.connector.version> <!-- mysql 5.7 server -->
@@ -47,6 +48,13 @@
         </dependency>
 
         <dependency>
+            <groupId>io.descoped.support</groupId>
+            <artifactId>descoped-jta-jboss-narayana</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate.version}</version>
@@ -65,54 +73,37 @@
         </dependency>
 
         <dependency>
+            <groupId>io.descoped.reflection</groupId>
+            <artifactId>reflection-proxy</artifactId>
+            <version>${descoped.reflection.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>io.descoped.test</groupId>
             <artifactId>descoped-junit4</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2database.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <profiles>
-
-        <profile>
-            <id>h2</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-
-            <dependencies>
-                <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                    <version>${h2database.version}</version>
-                    <scope>test</scope>
-                </dependency>
-
-            </dependencies>
-        </profile>
-
-        <profile>
-            <id>mysql</id>
-
-            <dependencies>
-                <dependency>
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
-                    <version>${mysql.connector.version}</version>
-                    <scope>test</scope>
-                </dependency>
-
-            </dependencies>
-        </profile>
-
         <profile>
             <id>jta</id>
 
             <dependencies>
-                <dependency>
-                    <groupId>io.descoped.support</groupId>
-                    <artifactId>descoped-jta-jboss-narayana</artifactId>
-                    <version>${project.version}</version>
-                    <scope>test</scope>
-                </dependency>
             </dependencies>
         </profile>
 
