@@ -1,4 +1,4 @@
-package io.descoped.support.jpa;
+package io.descoped.support.jdbc.props;
 
 import org.apache.deltaspike.core.spi.config.ConfigSource;
 

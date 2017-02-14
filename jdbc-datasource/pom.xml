@@ -10,14 +10,13 @@
     </parent>
 
     <groupId>io.descoped.support</groupId>
-    <artifactId>descoped-jpa-hibernate-orm</artifactId>
+    <artifactId>descoped-jdbc-datasource</artifactId>
     <packaging>jar</packaging>
-    <name>Descoped JPA Hibernate ORM</name>
+    <name>Descoped JDBC DataSource</name>
     <url>http://www.descoped.io</url>
 
     <properties>
         <descoped.reflection.version>1.0.1</descoped.reflection.version>
-        <hibernate.version>5.2.7.Final</hibernate.version>
         <h2database.version>1.4.193</h2database.version>
         <mysql.connector.version>5.1.40</mysql.connector.version> <!-- mysql 5.7 server -->
     </properties>
@@ -49,40 +48,21 @@
 
         <dependency>
             <groupId>io.descoped.support</groupId>
-            <artifactId>descoped-jdbc-datasource</artifactId>
-            <version>${project.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.descoped.support</groupId>
             <artifactId>descoped-jta-jboss-narayana</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-c3p0</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-ehcache</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>io.descoped.reflection</groupId>
             <artifactId>reflection-proxy</artifactId>
             <version>${descoped.reflection.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.deltaspike.core</groupId>
+            <artifactId>deltaspike-core-impl</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -103,17 +83,5 @@
             <version>${mysql.connector.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-
-    <profiles>
-        <profile>
-            <id>jta</id>
-
-            <dependencies>
-            </dependencies>
-        </profile>
-
-    </profiles>
-
 </project>

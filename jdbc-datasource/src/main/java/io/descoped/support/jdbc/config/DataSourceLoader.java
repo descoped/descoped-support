@@ -1,4 +1,4 @@
-package io.descoped.support.jpa.config;
+package io.descoped.support.jdbc.config;
 
 import org.apache.deltaspike.core.api.config.ConfigResolver;
 
@@ -34,7 +34,7 @@ public class DataSourceLoader {
     public void load() {
         if (!dataSourceConfigMap.isEmpty()) return;
 
-        for(String dataSourceName : dataSourceNames) {
+        for (String dataSourceName : dataSourceNames) {
             String dataSourceClass = resolveDataSourceClass(dataSourceName);
             DataSourceConfig dataSourceConfig = createDataSourceConfig(dataSourceName, dataSourceClass);
             dataSourceConfigMap.put(dataSourceName, dataSourceConfig);
@@ -42,11 +42,14 @@ public class DataSourceLoader {
     }
 
     private DataSourceConfig createDataSourceConfig(String dataSourceName, String dataSourceClass) {
-        if ("org.h2.jdbcx.JdbcDataSource".equals(dataSourceClass)) {
-            return new H2Jdbc14DataSourceConfig(dataSourceName);
+        if ("io.descoped.support.jta.jdbc.TransactionalDataSource".equals(dataSourceClass)) {
+            return new NarayanaJTADataSourceConfig(dataSourceName);
+
+        } else if ("org.h2.jdbcx.JdbcDataSource".equals(dataSourceClass)) {
+            return new H2DataSourceConfig(dataSourceName);
 
         } else if ("com.mysql.jdbc.jdbc2.optional.MysqlDataSource".equals(dataSourceClass)) {
-            return new MySQLJdbc51DataSourceConfig(dataSourceName);
+            return new MySQLDataSourceConfig(dataSourceName);
         } else {
             throw new UnsupportedOperationException("Unsupported DataSource: " + dataSourceClass);
         }

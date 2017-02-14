@@ -1,7 +1,7 @@
 package io.descoped.support.jta.test;
 
-import io.descoped.support.jta.JtaPrimitive;
-import io.descoped.support.jta.TransactionStatus;
+import io.descoped.support.jta.primitive.JtaPrimitive;
+import io.descoped.support.jta.status.TransactionStatus;
 import io.descoped.testutils.junit4.runner.DescopedTestRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;

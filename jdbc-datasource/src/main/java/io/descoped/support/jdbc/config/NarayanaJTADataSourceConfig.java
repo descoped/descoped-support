@@ -1,4 +1,4 @@
-package io.descoped.support.jpa.config;
+package io.descoped.support.jdbc.config;
 
 import io.descoped.container.exception.DescopedServerException;
 import io.descoped.reflection.proxy.ObjectProxy;
@@ -6,22 +6,20 @@ import io.descoped.reflection.proxy.ObjectProxy;
 import javax.sql.DataSource;
 
 /**
- * Created by oranheim on 13/02/2017.
+ * Created by oranheim on 14/02/2017.
  */
-public class MySQLJdbc51DataSourceConfig extends DataSourceConfig {
+public class NarayanaJTADataSourceConfig extends DataSourceConfig {
 
-    public MySQLJdbc51DataSourceConfig(String dataSourceName) {
-        super(dataSourceName);
+    public NarayanaJTADataSourceConfig(String datasourceName) {
+        super(datasourceName);
     }
 
     @Override
     public DataSource createDatasource() throws DescopedServerException {
         ObjectProxy<DataSource> proxy = createDatasourceDriver();
-        proxy.method("setUrl", String.class).invoke(getDataUrl());
+        proxy.method("setJndiName", String.class).invoke(getJndiNameRef());
         proxy.method("setUser", String.class).invoke(getUsername());
         proxy.method("setPassword", String.class).invoke(getPassword());
-        DataSource instance = proxy.getInstance();
-        return instance;
+        return proxy.getInstance();
     }
-
 }

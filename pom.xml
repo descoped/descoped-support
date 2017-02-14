@@ -80,7 +80,8 @@
     </pluginRepositories>
 
     <properties>
-        <descoped.container.version>1.0.3</descoped.container.version>
+        <!--<descoped.container.version>1.0.3</descoped.container.version>-->
+        <descoped.container.version>1.0.4-SNAPSHOT</descoped.container.version>
         <descoped.web.version>1.0.3</descoped.web.version>
         <descoped.testutils.version>1.0.3</descoped.testutils.version>
     </properties>
@@ -103,6 +104,13 @@
 
             <dependency>
                 <groupId>io.descoped.support</groupId>
+                <artifactId>descoped-jdbc-datasource</artifactId>
+                <version>${project.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.descoped.support</groupId>
                 <artifactId>descoped-jpa-hibernate-orm</artifactId>
                 <version>${project.version}</version>
                 <scope>compile</scope>
@@ -113,6 +121,7 @@
     <modules>
         <module>jndi-jboss-naming</module>
         <module>jta-jboss-narayana</module>
+        <module>jdbc-datasource</module>
         <module>jpa-hibernate-orm</module>
     </modules>
 

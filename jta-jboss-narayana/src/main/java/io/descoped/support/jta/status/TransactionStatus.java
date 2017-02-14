@@ -1,4 +1,4 @@
-package io.descoped.support.jta;
+package io.descoped.support.jta.status;
 
 import javax.transaction.Status;
 

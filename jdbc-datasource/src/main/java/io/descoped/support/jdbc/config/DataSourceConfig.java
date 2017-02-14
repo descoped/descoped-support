@@ -1,4 +1,4 @@
-package io.descoped.support.jpa.config;
+package io.descoped.support.jdbc.config;
 
 import io.descoped.container.exception.DescopedServerException;
 import io.descoped.reflection.proxy.ClassProxy;
@@ -39,11 +39,16 @@ abstract public class DataSourceConfig {
 
     private Map<String, String> resolvePropertyMap() {
         Map<String, String> props = new HashMap<>();
-        props.put("jdbc.driver", ConfigResolver.resolve(String.format("jdbc.driver.%s", datasourceName)).getValue());
-        props.put("jdbc.jndi", ConfigResolver.resolve(String.format("jdbc.jndi.%s", datasourceName)).getValue());
-        props.put("jdbc.url", ConfigResolver.resolve(String.format("jdbc.url.%s", datasourceName)).getValue());
-        props.put("jdbc.username", ConfigResolver.resolve(String.format("jdbc.username.%s", datasourceName)).getValue());
-        props.put("jdbc.password", ConfigResolver.resolve(String.format("jdbc.password.%s", datasourceName)).withDefault("").getValue());
+        try {
+            props.put("jdbc.driver", ConfigResolver.resolve(String.format("jdbc.driver.%s", datasourceName)).getValue());
+            props.put("jdbc.jndi", ConfigResolver.resolve(String.format("jdbc.jndi.%s", datasourceName)).getValue());
+            props.put("jdbc.jndi-ref", ConfigResolver.resolve(String.format("jdbc.jndi-ref.%s", datasourceName)).getValue());
+            props.put("jdbc.url", ConfigResolver.resolve(String.format("jdbc.url.%s", datasourceName)).getValue());
+            props.put("jdbc.username", ConfigResolver.resolve(String.format("jdbc.username.%s", datasourceName)).getValue());
+            props.put("jdbc.password", ConfigResolver.resolve(String.format("jdbc.password.%s", datasourceName)).withDefault("").getValue());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return props;
     }
 
@@ -52,8 +57,13 @@ abstract public class DataSourceConfig {
     }
 
     protected ObjectProxy<DataSource> createDatasourceDriver() {
-        ClassProxy<DataSource> classProxy = new ClassProxy(getDriverclass());
-        return classProxy.construct();
+        try {
+            ClassProxy<DataSource> classProxy = new ClassProxy(getDriverclass());
+            return classProxy.construct();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     protected String getDriverclass() {
@@ -62,6 +72,11 @@ abstract public class DataSourceConfig {
 
     protected String getJndiName() {
         return datasourceProperties.get("jdbc.jndi");
+    }
+
+    // only used by NarayanaTransactionalDataSource
+    protected String getJndiNameRef() {
+        return datasourceProperties.get("jdbc.jndi-ref");
     }
 
     protected String getDataUrl() {
@@ -88,6 +103,7 @@ abstract public class DataSourceConfig {
                 context.bind(dataSourceJndiName, dataSource);
             }
         } catch (NamingException e) {
+            e.printStackTrace();
             throw new DescopedServerException(e);
         }
     }
@@ -102,6 +118,7 @@ abstract public class DataSourceConfig {
             }
         } catch (NamingException e) {
             e.printStackTrace();
+            throw new DescopedServerException(e);
         }
     }
 }

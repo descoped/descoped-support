@@ -1,6 +1,7 @@
-package io.descoped.support.jta;
+package io.descoped.support.jta.cdi;
 
 import io.descoped.container.exception.DescopedServerException;
+import io.descoped.support.jta.primitive.JtaPrimitive;
 import org.jboss.weld.transaction.spi.TransactionServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

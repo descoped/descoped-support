@@ -1,9 +1,9 @@
-package io.descoped.support.jpa.primitive;
+package io.descoped.support.jdbc.primitive;
 
 import io.descoped.container.module.DescopedPrimitive;
 import io.descoped.container.module.PrimitiveModule;
-import io.descoped.support.jpa.config.DataSourceConfig;
-import io.descoped.support.jpa.config.DataSourceLoader;
+import io.descoped.support.jdbc.config.DataSourceConfig;
+import io.descoped.support.jdbc.config.DataSourceLoader;
 
 import javax.annotation.Priority;
 import javax.enterprise.inject.Vetoed;

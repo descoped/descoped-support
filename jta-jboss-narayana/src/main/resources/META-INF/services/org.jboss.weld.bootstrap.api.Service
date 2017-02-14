@@ -1,1 +1,1 @@
-io.descoped.support.jta.DescopedTransactionServices
+io.descoped.support.jta.cdi.DescopedTransactionServices

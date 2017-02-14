@@ -17,23 +17,19 @@
  *     under the License.
  */
 
-package io.descoped.support.jpa;
+package io.descoped.support.jdbc.props;
 
-import org.apache.deltaspike.core.api.config.PropertyFileConfig;
-
-import javax.enterprise.context.ApplicationScoped;
-
-@ApplicationScoped
-public class PropertiesConfig implements PropertyFileConfig {
-
-    @Override
-    public String getPropertyFileName() {
-        return "META-INF/jpa-jdbc-config.properties";
-    }
-
-    @Override
-    public boolean isOptional() {
-        return false;
-    }
-
-}
+//@ApplicationScoped
+//public class PropertiesConfig implements PropertyFileConfig {
+//
+//    @Override
+//    public String getPropertyFileName() {
+//        return "META-INF/jdbc-datasource.properties";
+//    }
+//
+//    @Override
+//    public boolean isOptional() {
+//        return true;
+//    }
+//
+//}
