@@ -15,11 +15,12 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Resource;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 /**
  * Created by oranheim on 13/02/2017.
  */
-public class DescopedResourceReferenceFactory<DataSource> implements ResourceReferenceFactory<Object> {
+public class DescopedResourceReferenceFactory implements ResourceReferenceFactory<Object> {
 
     private static final Logger log = LoggerFactory.getLogger(DescopedResourceReferenceFactory.class);
     private final Resource resourceAnno;
@@ -37,8 +38,8 @@ public class DescopedResourceReferenceFactory<DataSource> implements ResourceRef
         return (DataSourcePrimitive) spiInstanceFactory.instances().get(DataSourcePrimitive.class).get();
     }
 
-    private ResourceReference<DataSource> findResourceObject() {
-        ResourceReference<javax.sql.DataSource> resourceReference;
+    private ResourceReference<Object> findResourceObject() {
+        ResourceReference<Object> resourceReference;
         if (isNotNull(resourceAnno.mappedName())) {
             javax.sql.DataSource dataSource = getDataSourceLoader().findDataSource(resourceAnno.mappedName());
             resourceReference = new SimpleResourceReference<>(dataSource);
@@ -46,7 +47,7 @@ public class DescopedResourceReferenceFactory<DataSource> implements ResourceRef
         } else if (isNotNull(resourceAnno.lookup())) {
             try {
                 InitialContext ic = new InitialContext();
-                javax.sql.DataSource dataSource = (javax.sql.DataSource) ic.lookup(resourceAnno.lookup());
+                DataSource dataSource = (DataSource) ic.lookup(resourceAnno.lookup());
                 resourceReference = new SimpleResourceReference<>(dataSource);
 
             } catch (NamingException e) {
@@ -57,12 +58,12 @@ public class DescopedResourceReferenceFactory<DataSource> implements ResourceRef
             throw new UnsupportedOperationException("You must use Resource.lookup() or .mappedName() to resolve a DataSource");
         }
 
-        return (ResourceReference<DataSource>) resourceReference;
+        return resourceReference;
     }
 
     @Override
     public ResourceReference<Object> createResource() {
-        return (ResourceReference<Object>) findResourceObject();
+        return findResourceObject();
     }
 
 }

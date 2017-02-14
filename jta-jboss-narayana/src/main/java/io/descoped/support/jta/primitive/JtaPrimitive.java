@@ -18,7 +18,7 @@ import javax.transaction.TransactionSynchronizationRegistry;
 /**
  * Created by oranheim on 06/02/2017.
  */
-@Priority(75)
+@Priority(60)
 @PrimitiveModule
 public class JtaPrimitive implements DescopedPrimitive {
 

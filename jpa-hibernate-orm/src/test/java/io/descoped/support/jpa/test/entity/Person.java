@@ -22,6 +22,12 @@ public class Person {
     public Person() {
     }
 
+    public Person(String id, String firstname, String lastname) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+
     public String getId() {
         return id;
     }

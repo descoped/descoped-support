@@ -14,7 +14,7 @@ import java.util.WeakHashMap;
 /**
  * Created by oranheim on 13/02/2017.
  */
-@Priority(90)
+@Priority(70)
 @PrimitiveModule
 @Vetoed
 public class DataSourcePrimitive implements DescopedPrimitive {

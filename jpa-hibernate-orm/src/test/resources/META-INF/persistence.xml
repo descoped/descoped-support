@@ -4,33 +4,36 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="CRM">
+    <persistence-unit name="PU1">
         <description>
-            Persistence unit for Hibernate User Guide
+            Descoped JPA module
         </description>
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!--<provider>io.descoped.support.jpa.hibernate.DescopedHibernatePersistenceProvider</provider>-->
+        <jta-data-source>java:/jdbc/TestDS</jta-data-source>
+        <!--<non-jta-data-source>java:/jdbc/TxTestDS</non-jta-data-source>-->
+
 
         <class>io.descoped.support.jpa.test.entity.Person</class>
 
         <properties>
-            <property name="javax.persistence.jdbc.driver"
-                      value="org.h2.Driver"/>
+            <!--<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>-->
+            <!--<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE"/>-->
+            <!--<property name="javax.persistence.jdbc.user" value="sa"/>-->
+            <!--<property name="javax.persistence.jdbc.password" value=""/>-->
 
-            <property name="javax.persistence.jdbc.url"
-                      value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 
-            <property name="javax.persistence.jdbc.user"
-                      value="sa"/>
-
-            <property name="javax.persistence.jdbc.password"
-                      value=""/>
-
-            <property name="hibernate.show_sql"
-                      value="true"/>
-
-            <property name="hibernate.hbm2ddl.auto"
-                      value="update"/>
+            <!--<property name="connection.provider_class"  value="org.hibernate.connection.C3P0ConnectionProvider"/>-->
+            <!--<property name="hibernate.c3p0.max_size" value="100" />-->
+            <!--<property name="hibernate.c3p0.min_size" value="0" />-->
+            <!--<property name="hibernate.c3p0.acquire_increment" value="1" />-->
+            <!--<property name="hibernate.c3p0.idle_test_period" value="300" />-->
+            <!--<property name="hibernate.c3p0.max_statements" value="0" />-->
+            <!--<property name="hibernate.c3p0.timeout" value="100" />-->
         </properties>
 
     </persistence-unit>
