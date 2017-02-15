@@ -38,7 +38,7 @@ public class EntityManagerFactoryResourceReference implements ResourceReference<
 
     @Override
     public EntityManagerFactory getInstance() {
-        log.trace("Lookup {} and resolve {}", unitName, getJpaPrimitive().hasEntityManagerFactory(unitName));
+//        log.trace("Lookup {} and resolve {}", unitName, getJpaPrimitive().hasEntityManagerFactory(unitName));
         if (isNotNull(unitName)) {
             EntityManagerFactory emf = getJpaPrimitive().findEntityManagerFactory(unitName);
             return emf;

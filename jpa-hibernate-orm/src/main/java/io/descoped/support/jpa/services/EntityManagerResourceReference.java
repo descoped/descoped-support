@@ -23,13 +23,13 @@ public class EntityManagerResourceReference implements ResourceReference<EntityM
 
     private static boolean ENABLE_TX_PROXY = false;
 
-    private final PersistenceContext persistenceContext;
+    private final PersistenceContext persistenceContextAnnotation;
     private String unitName;
     private EntityManager entityManager;
 
-    public EntityManagerResourceReference(PersistenceContext persistenceContext) {
-        this.unitName = persistenceContext.unitName();
-        this.persistenceContext = persistenceContext;
+    public EntityManagerResourceReference(PersistenceContext persistenceContextAnnotation) {
+        this.unitName = persistenceContextAnnotation.unitName();
+        this.persistenceContextAnnotation = persistenceContextAnnotation;
     }
 
     private boolean isNotNull(String value) {
@@ -45,8 +45,8 @@ public class EntityManagerResourceReference implements ResourceReference<EntityM
     public EntityManager getInstance() {
         if (entityManager == null) {
             EntityManagerFactory entityManagerFactory = getJpaPrimitive().findEntityManagerFactory(unitName);
-            if (ENABLE_TX_PROXY && persistenceContext.synchronization().equals(SynchronizationType.SYNCHRONIZED)) {
-                log.trace("SynchronizationType: {}", persistenceContext.synchronization());
+            if (ENABLE_TX_PROXY && persistenceContextAnnotation.synchronization().equals(SynchronizationType.SYNCHRONIZED)) {
+                log.trace("SynchronizationType: {}", persistenceContextAnnotation.synchronization());
                 entityManager = JtaEntityManagerProxy.newInstance(entityManagerFactory.createEntityManager());
             } else {
                 entityManager = entityManagerFactory.createEntityManager();
@@ -57,7 +57,7 @@ public class EntityManagerResourceReference implements ResourceReference<EntityM
 
     @Override
     public void release() {
-        log.trace("Release of {} EntityManager: {}", (entityManager.isOpen() ? "Open" : "Closed"), unitName);
+        log.trace("Release of {} EntityManager: {}", (entityManager.isOpen() ? "(open)" : "(closed)"), unitName);
         if (entityManager.isOpen()) {
             entityManager.close();
         }

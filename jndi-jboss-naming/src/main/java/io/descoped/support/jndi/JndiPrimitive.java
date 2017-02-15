@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Priority;
+import javax.enterprise.inject.Vetoed;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -20,6 +21,7 @@ import java.util.Hashtable;
  */
 @Priority(50)
 @PrimitiveModule
+@Vetoed
 public class JndiPrimitive implements DescopedPrimitive {
 
     public static final String INITIAL_CONTEXT_FACTORY = "org.jnp.interfaces.NamingContextFactory";

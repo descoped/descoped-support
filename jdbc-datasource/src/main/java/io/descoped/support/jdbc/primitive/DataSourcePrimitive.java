@@ -9,7 +9,7 @@ import javax.annotation.Priority;
 import javax.enterprise.inject.Vetoed;
 import javax.sql.DataSource;
 import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by oranheim on 13/02/2017.
@@ -20,7 +20,11 @@ import java.util.WeakHashMap;
 public class DataSourcePrimitive implements DescopedPrimitive {
 
     private DataSourceLoader dataSourceLoader;
-    private Map<String, DataSource> dataSourceMap = new WeakHashMap<>();
+    private Map<String, DataSource> dataSourceMap;
+
+    public DataSourcePrimitive() {
+        dataSourceMap = new ConcurrentHashMap<>(); // todo: consider if this should be weak
+    }
 
     public DataSourceLoader getDataSourceLoader() {
         return dataSourceLoader;
@@ -50,7 +54,7 @@ public class DataSourcePrimitive implements DescopedPrimitive {
         for(DataSourceConfig dataSourceConfig : dataSourceLoader.getDataSourceConfigList()) {
             dataSourceConfig.unbind();
             dataSourceMap.clear();
-            dataSourceMap = new WeakHashMap<>();
+            dataSourceMap = new ConcurrentHashMap<>();
         }
     }
 

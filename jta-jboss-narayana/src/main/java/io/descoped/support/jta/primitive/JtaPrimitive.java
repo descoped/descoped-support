@@ -10,6 +10,7 @@ import io.descoped.container.module.DescopedPrimitive;
 import io.descoped.container.module.PrimitiveModule;
 
 import javax.annotation.Priority;
+import javax.enterprise.inject.Vetoed;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.transaction.TransactionManager;
@@ -20,6 +21,7 @@ import javax.transaction.TransactionSynchronizationRegistry;
  */
 @Priority(60)
 @PrimitiveModule
+@Vetoed
 public class JtaPrimitive implements DescopedPrimitive {
 
     private static final String TRANSACTION_MANAGER_JNDI = "java:/jboss/TransactionManager";

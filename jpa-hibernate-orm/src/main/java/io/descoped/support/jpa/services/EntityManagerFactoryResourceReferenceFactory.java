@@ -38,7 +38,8 @@ public class EntityManagerFactoryResourceReferenceFactory implements ResourceRef
     @Override
     public ResourceReference<EntityManagerFactory> createResource() {
         if (isNotNull(unitName)) {
-            if (false) {
+            // todo: use a simple resource ref, because we won't have the CDI container to release a global resource. Or, disable release in EntityManagerFactoryResourceReference
+            if (true) {
                 EntityManagerFactory emf = getJpaPrimitive().findEntityManagerFactory(unitName);
                 ResourceReference<EntityManagerFactory> factory = new SimpleResourceReference<>(emf);
                 return factory;

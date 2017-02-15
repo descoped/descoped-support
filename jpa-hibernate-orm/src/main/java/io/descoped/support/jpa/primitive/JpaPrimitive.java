@@ -14,7 +14,7 @@ import javax.persistence.Persistence;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by oranheim on 14/02/2017.
@@ -26,7 +26,11 @@ public class JpaPrimitive implements DescopedPrimitive {
 
     private static final Logger log = LoggerFactory.getLogger(JpaPrimitive.class);
 
-    private Map<String, EntityManagerFactory> entityManagerFactoryMap = new WeakHashMap<>();
+    private Map<String, EntityManagerFactory> entityManagerFactoryMap;
+
+    public JpaPrimitive() {
+        entityManagerFactoryMap = new ConcurrentHashMap<>();
+    }
 
     public boolean hasEntityManagerFactory(String unitName) {
         return entityManagerFactoryMap.containsKey(unitName);
@@ -52,7 +56,7 @@ public class JpaPrimitive implements DescopedPrimitive {
     public void releaseEntityManagerFactory(String unitName) {
         if (entityManagerFactoryMap.containsKey(unitName)) {
             EntityManagerFactory emf = entityManagerFactoryMap.get(unitName);
-            log.trace("Release of {}: {}", (emf.isOpen() ? "Open" : "Closed"), unitName);
+            log.trace("Release of {} EntityManagerFactory: {}", (emf.isOpen() ? "(open)" : "(closed)"), unitName);
             if (emf.isOpen()) {
                 emf.close();
             }
@@ -75,7 +79,7 @@ public class JpaPrimitive implements DescopedPrimitive {
 
     @Override
     public void start() {
-//        discoverAndCreatePersistenceUnits();
+        discoverAndCreatePersistenceUnits();
     }
 
     @Override

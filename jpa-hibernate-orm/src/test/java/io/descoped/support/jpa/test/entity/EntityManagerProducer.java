@@ -1,5 +1,6 @@
-package io.descoped.support.jpa.test;
+package io.descoped.support.jpa.test.entity;
 
+import io.descoped.support.jpa.services.JtaEntityManagerProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,12 +28,12 @@ public class EntityManagerProducer {
     @Default
     @RequestScoped
     protected EntityManager createEntityManager() {
-        log.trace("------------------------------------------> Produce: EntityManager");
-        return entityManagerFactory.createEntityManager();
+//        log.trace("------------------------------------------> Produce: EntityManager");
+        return JtaEntityManagerProxy.newInstance(entityManagerFactory.createEntityManager());
     }
 
     protected void closeEntityManager(@Disposes EntityManager entityManager) {
-        log.trace("------------------------------------------> Close EM: {} => {}", entityManager.hashCode(), entityManager.isOpen());
+        log.trace("Close EntityManager Proxy: {} -- isOpen: {}", entityManager.hashCode(), entityManager.isOpen());
         if (entityManager.isOpen()) {
             entityManager.close();
         }

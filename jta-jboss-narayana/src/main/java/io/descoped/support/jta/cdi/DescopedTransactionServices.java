@@ -27,7 +27,7 @@ public class DescopedTransactionServices implements TransactionServices {
     private static int count = 0;
 
     public DescopedTransactionServices() {
-        log.trace("Create DescopedTransactionServices..");
+//        log.trace("Create DescopedTransactionServices..");
 //        try {
 //            if (count == 1)
 //                throw new RuntimeException("XXX");
@@ -40,7 +40,7 @@ public class DescopedTransactionServices implements TransactionServices {
 
     @Override
     public void registerSynchronization(Synchronization synchronization) {
-        log.trace("-------> registerSynchronization({})", synchronization);
+        log.trace("o--> registerSynchronization({})", synchronization);
         try {
             JtaPrimitive.TransactionSynchronizationRegistry().registerInterposedSynchronization(synchronization);
         } catch (NamingException e) {
@@ -50,7 +50,7 @@ public class DescopedTransactionServices implements TransactionServices {
 
     @Override
     public boolean isTransactionActive() {
-        log.trace("-------> isTransactionActive");
+        log.trace("o--> isTransactionActive");
         try {
             return JtaPrimitive.getTransaction().getStatus() == Status.STATUS_ACTIVE;
         } catch (SystemException | NamingException e) {
@@ -60,7 +60,7 @@ public class DescopedTransactionServices implements TransactionServices {
 
     @Override
     public UserTransaction getUserTransaction() {
-        log.trace("-------> getUserTransaction");
+//        log.trace("-------> getUserTransaction");
         try {
             InitialContext ic = new InitialContext();
             UserTransaction utx = (UserTransaction) ic.lookup("java:/UserTransaction");
