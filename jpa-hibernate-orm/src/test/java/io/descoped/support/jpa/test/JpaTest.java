@@ -46,7 +46,7 @@ public class JpaTest {
     @Inject
     EntityManagerBean entityManagerBean;
 
-    @Resource(mappedName = "em3")
+    @Resource(mappedName = "em2")
     DataSource dataSource;
 
     @PersistenceUnit(unitName = "PU1")

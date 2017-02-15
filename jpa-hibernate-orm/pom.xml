@@ -124,14 +124,18 @@
 
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>jta</id>
-
-            <dependencies>
-            </dependencies>
-        </profile>
-
-    </profiles>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <systemProperties>
+                        <org.apache.deltaspike.ProjectStage>UnitTest</org.apache.deltaspike.ProjectStage>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
