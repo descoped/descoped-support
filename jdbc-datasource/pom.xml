@@ -16,8 +16,6 @@
     <url>http://www.descoped.io</url>
 
     <properties>
-        <descoped.reflection.version>1.0.1</descoped.reflection.version>
-        <fast.classpath.scanner.version>2.0.16</fast.classpath.scanner.version>
         <h2database.version>1.4.193</h2database.version>
         <mysql.connector.version>5.1.40</mysql.connector.version> <!-- mysql 5.7 server -->
     </properties>

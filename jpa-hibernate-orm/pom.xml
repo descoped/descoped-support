@@ -16,7 +16,6 @@
     <url>http://www.descoped.io</url>
 
     <properties>
-        <descoped.reflection.version>1.0.1</descoped.reflection.version>
         <hibernate.version>5.2.7.Final</hibernate.version>
         <h2database.version>1.4.193</h2database.version>
         <mysql.connector.version>5.1.40</mysql.connector.version> <!-- mysql 5.7 server -->

@@ -80,7 +80,8 @@
     </pluginRepositories>
 
     <properties>
-        <!--<descoped.container.version>1.0.3</descoped.container.version>-->
+        <descoped.reflection.version>1.0.1</descoped.reflection.version>
+        <fast.classpath.scanner.version>2.0.16</fast.classpath.scanner.version>
         <descoped.container.version>1.0.4</descoped.container.version>
         <descoped.web.version>1.0.3</descoped.web.version>
         <descoped.testutils.version>1.0.3</descoped.testutils.version>
