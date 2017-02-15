@@ -30,7 +30,7 @@
 
     <logger name="ch.qos.logback" level="OFF" additivity="false"/>
     <logger name="io.descoped.container.cdi.factory" level="INFO"/>
-    <logger name="io.descoped.container.module" level="INFO"/>
+    <!--<logger name="io.descoped.container.module" level="INFO"/>-->
 
     <logger name="org.jboss.weld" level="INFO"/>
     <logger name="io.descoped" level="TRACE"/>

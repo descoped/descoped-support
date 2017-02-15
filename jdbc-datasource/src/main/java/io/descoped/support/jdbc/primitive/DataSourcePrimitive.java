@@ -2,8 +2,10 @@ package io.descoped.support.jdbc.primitive;
 
 import io.descoped.container.module.DescopedPrimitive;
 import io.descoped.container.module.PrimitiveModule;
+import io.descoped.deltaspike.NonCdiConfigSourceLoader;
 import io.descoped.support.jdbc.config.DataSourceConfig;
 import io.descoped.support.jdbc.config.DataSourceLoader;
+import io.descoped.support.jdbc.props.JdbcDataSourceConfigSource;
 
 import javax.annotation.Priority;
 import javax.enterprise.inject.Vetoed;
@@ -40,6 +42,7 @@ public class DataSourcePrimitive implements DescopedPrimitive {
 
     @Override
     public void start() {
+        new NonCdiConfigSourceLoader<>(JdbcDataSourceConfigSource.class).initialize();
         dataSourceLoader = new DataSourceLoader();
         dataSourceLoader.load();
         for(DataSourceConfig dataSourceConfig : dataSourceLoader.getDataSourceConfigList()) {
