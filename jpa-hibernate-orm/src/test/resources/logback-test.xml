@@ -36,6 +36,7 @@
     <logger name="io.descoped" level="TRACE"/>
     <logger name="org.jnp" level="INFO"/>
     <logger name="org.hibernate" level="INFO"/>
+    <!--<logger name="org.hibernate.jpa" level="DEBUG"/>-->
     <logger name="com.arjuna.ats" level="INFO"/>
     <logger name="org.h2" level="TRACE"/>
 

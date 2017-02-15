@@ -21,7 +21,6 @@ public class EntityManagerFactoryResourceReference implements ResourceReference<
 
     private final String name;
     private final String unitName;
-    private EntityManagerFactory emf;
 
     public EntityManagerFactoryResourceReference(final String name, final String unitName) {
         this.name = name;
@@ -39,6 +38,7 @@ public class EntityManagerFactoryResourceReference implements ResourceReference<
 
     @Override
     public EntityManagerFactory getInstance() {
+        log.trace("Lookup {} and resolve {}", unitName, getJpaPrimitive().hasEntityManagerFactory(unitName));
         if (isNotNull(unitName)) {
             EntityManagerFactory emf = getJpaPrimitive().findEntityManagerFactory(unitName);
             return emf;

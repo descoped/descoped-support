@@ -5,17 +5,13 @@
              version="2.1">
 
     <persistence-unit name="PU1">
-        <description>
-            Descoped JPA module
-        </description>
+        <description>Descoped JPA module</description>
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <!--<provider>io.descoped.support.jpa.hibernate.DescopedHibernatePersistenceProvider</provider>-->
         <jta-data-source>java:/jdbc/TestDS</jta-data-source>
         <!--<non-jta-data-source>java:/jdbc/TxTestDS</non-jta-data-source>-->
 
-
-        <class>io.descoped.support.jpa.test.entity.Person</class>
+        <!--<class>io.descoped.support.jpa.test.entity.Person</class>-->
 
         <properties>
             <!--<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>-->

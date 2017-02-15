@@ -2,6 +2,8 @@ package io.descoped.support.jpa.primitive;
 
 import io.descoped.container.module.DescopedPrimitive;
 import io.descoped.container.module.PrimitiveModule;
+import org.hibernate.jpa.boot.internal.ParsedPersistenceXmlDescriptor;
+import org.hibernate.jpa.boot.internal.PersistenceXmlParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,6 +11,8 @@ import javax.annotation.Priority;
 import javax.enterprise.inject.Vetoed;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -22,26 +26,29 @@ public class JpaPrimitive implements DescopedPrimitive {
 
     private static final Logger log = LoggerFactory.getLogger(JpaPrimitive.class);
 
-    private Map<String, EntityManagerFactory> entityManagerFactoryMap;
+    private Map<String, EntityManagerFactory> entityManagerFactoryMap = new WeakHashMap<>();
 
-    private boolean hasEntityManagerFactory(String unitName) {
+    public boolean hasEntityManagerFactory(String unitName) {
         return entityManagerFactoryMap.containsKey(unitName);
     }
 
     private EntityManagerFactory createEntityManagerFactory(String unitName) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(unitName);
+//        log.info("Create PersistenceUnit instance: {}@{}", unitName, entityManagerFactory.hashCode());
         entityManagerFactoryMap.put(unitName, entityManagerFactory);
         return entityManagerFactory;
     }
 
     public EntityManagerFactory findEntityManagerFactory(String unitName) {
         if (hasEntityManagerFactory(unitName)) {
-            return entityManagerFactoryMap.get(unitName);
+            EntityManagerFactory entityManagerFactory = entityManagerFactoryMap.get(unitName);
+//            log.trace("Found PersistenceUnit instance: {}@{}", unitName, entityManagerFactory.hashCode());
+            return entityManagerFactory;
         } else {
             return createEntityManagerFactory(unitName);
         }
     }
-    
+
     public void releaseEntityManagerFactory(String unitName) {
         if (entityManagerFactoryMap.containsKey(unitName)) {
             EntityManagerFactory emf = entityManagerFactoryMap.get(unitName);
@@ -53,13 +60,22 @@ public class JpaPrimitive implements DescopedPrimitive {
         }
     }
 
+    private void discoverAndCreatePersistenceUnits() {
+        List<ParsedPersistenceXmlDescriptor> units = PersistenceXmlParser.locatePersistenceUnits(Collections.emptyMap());
+        for (ParsedPersistenceXmlDescriptor desc : units) {
+            String unitName = desc.getName();
+            log.trace("Discovered PersistenceUnit: {}", unitName);
+            findEntityManagerFactory(unitName);
+        }
+    }
+
     @Override
     public void init() {
-        entityManagerFactoryMap = new WeakHashMap<>();
     }
 
     @Override
     public void start() {
+//        discoverAndCreatePersistenceUnits();
     }
 
     @Override

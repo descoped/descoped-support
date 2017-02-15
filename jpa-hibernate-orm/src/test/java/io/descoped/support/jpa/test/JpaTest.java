@@ -4,6 +4,7 @@ import io.descoped.support.jpa.test.entity.EmBean;
 import io.descoped.support.jpa.test.entity.Person;
 import io.descoped.testutils.junit4.runner.DescopedTestRunner;
 import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
+import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
 import org.apache.deltaspike.cdise.api.CdiContainerLoader;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -19,6 +20,7 @@ import javax.sql.DataSource;
 import javax.transaction.UserTransaction;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,7 +43,7 @@ public class JpaTest {
     @PersistenceUnit(unitName = "PU1")
     private EntityManagerFactory emf;
 
-//    @PersistenceContext(unitName = "PU1")
+    //    @PersistenceContext(unitName = "PU1")
 //    @Inject
     private EntityManager em;
 
@@ -50,36 +52,24 @@ public class JpaTest {
         CdiContainerLoader.getCdiContainer().getContextControl().startContext(RequestScoped.class);
     }
 
-    @Test
+
+//    @Test
     public void testDiscoveryEntity() throws Exception {
+        List<String> classNamesList = new ArrayList<>();
 
-        new FastClasspathScanner(new String[]
+
+        ScanResult x = new FastClasspathScanner(new String[]
                 {"io.descoped"})  // Whitelisted package prefixes
-//                .matchSubclassesOf(Object.class,
-//                        // c is a subclass of DBModel
-//                        c -> System.out.println("Found subclass of Object: " + c.getName()))
-//                .matchClassesImplementing(Runnable.class,
-//                        // c is a class that implements Runnable
-//                        c -> System.out.println("Found Runnable: " + c.getName()))
-                .matchClassesWithAnnotation(Entity.class,
-                        // c is a class annotated with @RestHandler
-                        c -> System.out.println("Found Entity annotation on class: "
-                                + c.getName()))
-//                .matchFilenamePattern("^template/.*\\.html",
-//                        // templatePath is a path on the classpath that matches the above pattern;
-//                        // inputStream is a stream opened on the file or zipfile entry.
-//                        // No need to close inputStream before exiting, it is closed by caller.
-//                        (templatePath, inputStream) -> {
-//                            try {
-//                                String template = IOUtils.toString(inputStream, "UTF-8");
-//                                System.out.println("Found template: " + absolutePath
-//                                        + " (size " + template.length() + ")");
-//                            } catch (IOException e) {
-//                                throw new RuntimeException(e);
-//                            }
-//                        })
-
-                .scan();  // Actually perform the scan
+                .matchClassesWithAnnotation(Entity.class, c -> {
+                    log.trace("Found class: {}", c);
+                    classNamesList.add(c.getName());
+                })
+                .scan();
+//        x.getClassNameToClassInfo().values();
+//        System.out.println("------------------------------------------------------: " + classNamesList.size());
+        classNamesList.forEach(c -> {
+            System.out.println("------------------------------------------------------: " + c);
+        });
     }
 
     @Test

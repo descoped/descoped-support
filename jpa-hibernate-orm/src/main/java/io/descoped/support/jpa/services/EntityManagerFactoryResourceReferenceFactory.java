@@ -38,8 +38,8 @@ public class EntityManagerFactoryResourceReferenceFactory implements ResourceRef
     @Override
     public ResourceReference<EntityManagerFactory> createResource() {
         if (isNotNull(unitName)) {
-            EntityManagerFactory emf = getJpaPrimitive().findEntityManagerFactory(unitName);
             if (false) {
+                EntityManagerFactory emf = getJpaPrimitive().findEntityManagerFactory(unitName);
                 ResourceReference<EntityManagerFactory> factory = new SimpleResourceReference<>(emf);
                 return factory;
             } else {
