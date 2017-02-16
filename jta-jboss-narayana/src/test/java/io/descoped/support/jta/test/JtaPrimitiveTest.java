@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
-import javax.naming.InitialContext;
 import javax.transaction.TransactionManager;
 import javax.transaction.TransactionSynchronizationRegistry;
 import javax.transaction.UserTransaction;
@@ -28,21 +27,20 @@ public class JtaPrimitiveTest {
     UserTransaction utx;
 
     @Test
+    public void testTxSyncManager() throws Exception {
+        TransactionSynchronizationRegistry transactionManager = JtaPrimitive.getTransactionSynchronizationRegistry();
+        assertNotNull(transactionManager);
+    }
+
+    @Test
     public void testTxManager() throws Exception {
         TransactionManager transactionManager = JtaPrimitive.getTransaction();
         assertNotNull(transactionManager);
     }
 
     @Test
-    public void testTxSyncManager() throws Exception {
-        TransactionSynchronizationRegistry transactionManager = JtaPrimitive.TransactionSynchronizationRegistry();
-        assertNotNull(transactionManager);
-    }
-
-    @Test
     public void testUserTransactionLookup() throws Exception {
-        InitialContext ic = new InitialContext();
-        UserTransaction utx = (UserTransaction) ic.lookup("java:/UserTransaction");
+        UserTransaction utx = JtaPrimitive.getUserTransaction();
         assertNotNull(utx);
     }
 

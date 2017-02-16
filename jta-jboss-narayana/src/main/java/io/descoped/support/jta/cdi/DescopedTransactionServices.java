@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Priority;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.transaction.Status;
 import javax.transaction.Synchronization;
@@ -24,17 +23,8 @@ import javax.transaction.UserTransaction;
 public class DescopedTransactionServices implements TransactionServices {
 
     private static final Logger log = LoggerFactory.getLogger(DescopedTransactionServices.class);
-    private static int count = 0;
 
     public DescopedTransactionServices() {
-//        log.trace("Create DescopedTransactionServices..");
-//        try {
-//            if (count == 1)
-//                throw new RuntimeException("XXX");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        count++;
     }
 
 
@@ -42,7 +32,7 @@ public class DescopedTransactionServices implements TransactionServices {
     public void registerSynchronization(Synchronization synchronization) {
         log.trace("o--> registerSynchronization({})", synchronization);
         try {
-            JtaPrimitive.TransactionSynchronizationRegistry().registerInterposedSynchronization(synchronization);
+            JtaPrimitive.getTransactionSynchronizationRegistry().registerInterposedSynchronization(synchronization);
         } catch (NamingException e) {
             throw new DescopedServerException(e);
         }
@@ -60,11 +50,8 @@ public class DescopedTransactionServices implements TransactionServices {
 
     @Override
     public UserTransaction getUserTransaction() {
-//        log.trace("-------> getUserTransaction");
         try {
-            InitialContext ic = new InitialContext();
-            UserTransaction utx = (UserTransaction) ic.lookup("java:/UserTransaction");
-            return utx;
+            return JtaPrimitive.getUserTransaction();
         } catch (NamingException e) {
             throw new DescopedServerException(e);
         }
