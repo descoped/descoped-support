@@ -60,11 +60,6 @@
                 <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>
-        <repository>
-            <id>jboss-public-repository</id>
-            <name>JBoss Public Repository</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-        </repository>
     </repositories>
 
     <pluginRepositories>
