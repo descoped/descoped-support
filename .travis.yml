@@ -6,7 +6,7 @@ notifications:
 jdk:
 - oraclejdk8
 install: echo 'Run Maven Tests'
-script: mvn clean install --settings .travis/settings.xml -Dmaven.javadoc.skip=true -U
+script: mvn clean install --settings .travis/settings.xml -Dmaven.javadoc.skip=true
   -B -V
 after_success: mvn deploy --settings .travis/settings.xml -DskipTests -B -V
 branches:
