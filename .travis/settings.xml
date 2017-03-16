@@ -19,5 +19,10 @@
             <url>https://repository.descoped.io/repository/maven-public/</url>
             <mirrorOf>*</mirrorOf>
         </mirror>
+        <mirror>
+            <id>jboss-public-repository</id>
+            <name>JBoss Public Repository</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+        </mirror>
     </mirrors>
 </settings>
