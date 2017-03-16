@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.descoped</groupId>
         <artifactId>parent</artifactId>
-        <version>4</version>
+        <version>5</version>
     </parent>
 
     <groupId>io.descoped.support</groupId>
@@ -30,12 +30,12 @@
         <repository>
             <id>descoped</id>
             <name>Descoped Releases</name>
-            <url>https://repository.musific.com/nexus/content/repositories/descoped/</url>
+            <url>https://repository.descoped.io/repository/descoped/</url>
         </repository>
         <snapshotRepository>
             <id>descoped-snapshots</id>
             <name>Descoped Snapshots</name>
-            <url>https://repository.musific.com/nexus/content/repositories/descoped-snapshots/</url>
+            <url>https://repository.descoped.io/repository/descoped-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
@@ -48,9 +48,9 @@
 
     <repositories>
         <repository>
-            <id>musific-public-repository-group</id>
-            <name>Musific Public Maven Repository Group</name>
-            <url>https://repository.musific.com/nexus/content/groups/public/</url>
+            <id>descoped</id>
+            <name>Descoped Public Maven Repository Group</name>
+            <url>https://repository.descoped.io/repository/descoped/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>never</updatePolicy>
@@ -64,9 +64,9 @@
 
     <pluginRepositories>
         <pluginRepository>
-            <id>musific-public-repository</id>
-            <name>Musific Public Maven Repository Group</name>
-            <url>https://repository.musific.com/nexus/content/groups/public/</url>
+            <id>descoped-snapshots</id>
+            <name>Descoped Public Maven Repository Group</name>
+            <url>https://repository.descoped.io/repository/descoped-snapshots/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>never</updatePolicy>
@@ -79,11 +79,11 @@
     </pluginRepositories>
 
     <properties>
-        <descoped.reflection.version>1.0.1</descoped.reflection.version>
+        <descoped.reflection.version>1.0.2</descoped.reflection.version>
         <fast.classpath.scanner.version>2.0.16</fast.classpath.scanner.version>
-        <descoped.container.version>1.0.4</descoped.container.version>
-        <descoped.web.version>1.0.3</descoped.web.version>
-        <descoped.testutils.version>1.0.3</descoped.testutils.version>
+        <descoped.container.version>1.0.5</descoped.container.version>
+        <descoped.web.version>1.0.4</descoped.web.version>
+        <descoped.testutils.version>1.0.4</descoped.testutils.version>
     </properties>
 
     <dependencyManagement>
