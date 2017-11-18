@@ -1,0 +1,56 @@
+{
+  "id": "descoped-support",
+  "name": "EE Support",
+  "pages": [
+    {
+      "group": "default",
+      "uri": "README.md"
+    }
+  ],
+  "sub-modules": [
+    {
+      "id": "jdbc-datasource",
+      "name": "JDBC Datasource",
+      "pages": [
+        {
+          "group": "default",
+          "uri": "README.md"
+        }
+      ]
+    },
+    {
+      "id": "jndi-jboss-naming",
+      "name": "JNDI Jboss Naming",
+      "pages": [
+        {
+          "group": "default",
+          "uri": "README.md"
+        }
+      ]
+    },
+    {
+      "id": "jpa-hibernate-orm",
+      "name": "JPA Hibernate ORM",
+      "pages": [
+        {
+          "group": "default",
+          "uri": "README.md"
+        }
+      ]
+    },
+    {
+      "id": "jta-jboss-narayana",
+      "name": "JTA JBoss Narayana",
+      "pages": [
+        {
+          "group": "default",
+          "uri": "README.md"
+        }
+      ]
+    },
+    {
+      "id": "spec",
+      "name": "BOM - Bill of Material"
+    }
+  ]
+}
