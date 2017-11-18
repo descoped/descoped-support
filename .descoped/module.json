@@ -1,5 +1,4 @@
 {
-  "id": "descoped-support",
   "name": "EE Support",
   "pages": [
     {
@@ -47,10 +46,6 @@
           "uri": "README.md"
         }
       ]
-    },
-    {
-      "id": "spec",
-      "name": "BOM - Bill of Material"
     }
   ]
 }
